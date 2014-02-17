@@ -5,6 +5,7 @@ from dict2xml import dict2xml
 
 from shipment import Shipment
 from trackinginfo import TrackingInfo
+from timeintransit import TimeInTransit
 
 class UPSConnection(object):
 
@@ -12,11 +13,13 @@ class UPSConnection(object):
         'track': 'https://wwwcie.ups.com/ups.app/xml/Track',
         'ship_confirm': 'https://wwwcie.ups.com/ups.app/xml/ShipConfirm',
         'ship_accept': 'https://wwwcie.ups.com/ups.app/xml/ShipAccept',
+        'timeintransit': 'https://wwwcie.ups.com/ups.app/xml/TimeInTransit',
     }
     production_urls = {
         'track': 'https://onlinetools.ups.com/ups.app/xml/Track',
         'ship_confirm': 'https://onlinetools.ups.com/ups.app/xml/ShipConfirm',
         'ship_accept': 'https://onlinetools.ups.com/ups.app/xml/ShipAccept',
+        'timeintransit': 'https://wwwcie.ups.com/ups.app/xml/TimeInTransit',
     }
 
     def __init__(self, license_number, user_id, password, shipper_number=None,
@@ -67,6 +70,9 @@ class UPSConnection(object):
 
     def create_shipment(self, *args, **kwargs):
         return Shipment(self, *args, **kwargs)
+
+    def time_in_transit(self, *args, **kwargs):
+      return TimeInTransit(self, *args, **kwargs)
 
 class UPSResult(object):
 
