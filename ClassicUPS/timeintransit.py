@@ -38,7 +38,13 @@ class TimeInTransit(object):
             }
         }
 
+        # Perform the request.
         self.result = ups_conn._transmit_request('timeintransit', time_in_transit_request)
+
+        # Check for errors in the response.
+        if 'Response' in self.result.dict_response['TimeInTransitResponse']:
+          if self.result.dict_response['TimeInTransitResponse']['Response']['ResponseStatusCode'] == '0':
+            raise Exception(self.result.dict_response['TimeInTransitResponse']['Response']['Error']['ErrorDescription'])
 
         self.services = {}
         for service_summary in self.result.dict_response['TimeInTransitResponse']['TransitResponse']['ServiceSummary']:
