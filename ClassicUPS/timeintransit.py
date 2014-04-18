@@ -2,7 +2,7 @@ from datetime import datetime
 
 class TimeInTransit(object):
 
-    def __init__(self, ups_conn, from_addr, to_addr, pickup_date, weight = None, value = None, weight_unit = 'LBS', value_unit = 'USD'):
+    def __init__(self, ups_conn, from_addr, to_addr, pickup_date, weight = None, value = None, weight_unit = 'LBS', value_unit = 'USD', total_packages_in_shipment = 1):
         time_in_transit_request = {
             'TimeInTransitRequest': {
                 'Request': {
@@ -35,6 +35,7 @@ class TimeInTransit(object):
                     },
                     'Weight': weight
                 },
+                'TotalPackagesInShipment': total_packages_in_shipment,
             }
         }
 
