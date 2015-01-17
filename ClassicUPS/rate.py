@@ -2,7 +2,7 @@ from datetime import datetime
 
 class Rate(object):
 
-    def __init__(self, ups_conn, shipper = None, ship_to = None, package = None):
+    def __init__(self, ups_conn, shipper = None, ship_to = None, packages = None):
         rate_request = {
             'RatingServiceSelectionRequest': {
                 'Request': {
@@ -39,8 +39,8 @@ class Rate(object):
                     # },
                     # 'NumOfPieces': '', # Optional, total # of pieces in all pallets.
 
-                    # Add required # of packages (max 200)
-                    'Package': package or {},
+                    # Add packages.
+                    'Package': packages,
 
                     # 'ShipmentServiceOptions': {
                     #     'SaturdayPickup': '', # True if exists
