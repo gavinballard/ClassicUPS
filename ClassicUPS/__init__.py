@@ -1,2 +1,3 @@
-from ups import UPSConnection
-from .package import Package
+from .ups import UPSConnection
+from .upsaddress import UPSAddress
+from .upspackage import UPSPackage

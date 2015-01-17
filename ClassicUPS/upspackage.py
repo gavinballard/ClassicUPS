@@ -1,9 +1,9 @@
 from dict2xml import dict2xml
 
 
-class Package(object):
+class UPSPackage(object):
     """
-    The package class represents a single package to be used when calculating rates.
+    The UPSPackage class represents a single package to be used when calculating rates.
     """
 
 
