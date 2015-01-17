@@ -1,16 +1,14 @@
-from dict2xml import dict2xml
+from .entity import UPSEntity
 
 
-class UPSPackage(object):
+class UPSPackage(UPSEntity):
     """
     The UPSPackage class represents a single package to be used when calculating rates.
     """
 
-
-    ###
+    ##
     # CONSTANTS
-    # Fixed values for various aspects of packaging.
-    ###
+    ##
 
     # Available packaging types.
     PACKAGING_TYPE_UNKNOWN              = '00'
@@ -37,13 +35,9 @@ class UPSPackage(object):
     # Available currencies.
     CURRENCY_USD = 'USD'
 
-    #SERVICE_CODE_NEXT_DAY_AIR_EARLY = '14'
-
-
-    ###
-    # INSTANCE VARIABLES
-    # Declare attributes for the package object and set defaults where appropriate.
-    ###
+    ##
+    # ENTITY ATTRIBUTES
+    ##
 
     packaging_type = PACKAGING_TYPE_PACKAGE
 
@@ -55,20 +49,6 @@ class UPSPackage(object):
 
     currency = CURRENCY_USD
     value = 0.0
-
-    def __init__(self, *args, **kwargs):
-        """
-        Initialise this package, overriding default attributes as needed.
-        """
-        for key, value in kwargs.iteritems():
-            if hasattr(self, key) and value is not None:
-                setattr(self, key, value)
-
-    def __unicode__(self):
-        """
-        Override the __unicode__() method so that the unicode() call inside dict2xml serializes this package correctly.
-        """
-        return dict2xml(self.to_dict())
 
     def to_dict(self):
         """
