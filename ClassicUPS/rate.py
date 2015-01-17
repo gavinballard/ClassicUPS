@@ -9,7 +9,7 @@ SHIPPING_SERVICES = {
     '12': 'Three-Day Select',
     '13': 'Next Day Air Saver',
     '14': 'Next Day Air Early A.M.',
-    '54': 'Worlwide Express Plus',
+    '54': 'Worldwide Express Plus',
     '59': 'Second Day Air A.M.',
     '65': 'Saver',
     '82': 'Today Standard',
