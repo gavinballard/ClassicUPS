@@ -63,8 +63,9 @@ class Rate(object):
                     # 'RateInformation': {
                     #     'NegotiatedRatesIndicator': '', # presence, adds rates n stuff?
                     #     'RateChartIndicator': '', # presences, does something
-                    #     'RatingMethodRequestedIndicator': '', # presence, return more information on calc. methods
                     # }
+
+                    #'RatingMethodRequestedIndicator': '',
                 },
             }
         }

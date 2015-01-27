@@ -35,20 +35,23 @@ class UPSPackage(UPSEntity):
     # Available currencies.
     CURRENCY_USD = 'USD'
 
-    ##
-    # ENTITY ATTRIBUTES
-    ##
+    def __init__(self, *args, **kwargs):
+        """
+        Set entity defaults on initialisation.
+        They may be overridden by the base UPSEntity __init__ implementation.
+        """
+        self.packaging_type = UPSPackage.PACKAGING_TYPE_PACKAGE
 
-    packaging_type = PACKAGING_TYPE_PACKAGE
+        self.dimensions = [0, 0, 0] # Length, width, height.
+        self.dimensions_unit = UPSPackage.DIMENSIONS_UNIT_IN
 
-    dimensions = [0, 0, 0] # Length, width, height.
-    dimensions_unit = DIMENSIONS_UNIT_IN
+        self.weight = 0.0
+        self.weight_unit = UPSPackage.WEIGHT_UNIT_LBS
 
-    weight = 0.0
-    weight_unit = WEIGHT_UNIT_LBS
+        self.currency = UPSPackage.CURRENCY_USD
+        self.value = 0.0
 
-    currency = CURRENCY_USD
-    value = 0.0
+        super(UPSPackage, self).__init__(*args, **kwargs)
 
     def to_dict(self):
         """
@@ -63,20 +66,20 @@ class UPSPackage(UPSEntity):
                 'UnitOfMeasurement': {
                     'Code': self.dimensions_unit,
                 },
-                'Length': length,
-                'Width': width,
-                'Height': height,
+                'Length': str(length),
+                'Width': str(width),
+                'Height': str(height),
             },
             'PackageWeight': {
                 'UnitOfMeasurement': {
                     'Code': self.weight_unit,
                 },
-                'Weight': self.weight,
+                'Weight': str(self.weight),
             },
             'PackageServiceOptions': {
                 'InsuredValue': {
                     'CurrencyCode': self.currency,
-                    'MonetaryValue': self.value,
+                    'MonetaryValue': str(self.value),
                 }
             }
         }
